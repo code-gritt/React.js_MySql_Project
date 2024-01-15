@@ -1,5 +1,6 @@
 import express from "express";
 import mysql2 from "mysql2";
+import cors from "cors";
 const app = express();
 
 const db = mysql2.createConnection({
@@ -13,6 +14,7 @@ app.get("/", (req, res) => {
   res.json("Hello World!");
 });
 
+app.use(cors());
 app.use(express.json());
 app.get("/books", (req, res) => {
   const q = "SELECT * FROM test.test";
